@@ -1,0 +1,135 @@
+{
+  "comments": [
+    {
+      "id": 1,
+      "name": "Akshay Sood",
+      "img": "/avatar.png",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+      "upVotes": 0,
+      "downVotes": 0,
+      "editCount": 0,
+      "children": [
+        {
+          "id": 101,
+          "parentId": 1,
+          "name": "John",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        },
+        {
+          "id": 102,
+          "parentId": 1,
+          "name": "Alice",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        },
+        {
+          "id": 103,
+          "parentId": 1,
+          "name": "Alice",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Brad",
+      "img": "avatar.png",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+      "upVotes": 0,
+      "downVotes": 0,
+      "editCount": 0,
+      "children": [
+        {
+          "id": 201,
+          "parentId": 2,
+          "name": "Jack",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        },
+        {
+          "id": 202,
+          "parentId": 2,
+          "name": "Jill",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        },
+        {
+          "id": 203,
+          "parentId": 2,
+          "name": "Mike",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": []
+        },
+        {
+          "id": 204,
+          "parentId": 2,
+          "name": "Rochelle",
+          "img": "avatar.png",
+          "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+          "upVotes": 0,
+          "downVotes": 0,
+          "editCount": 0,
+          "children": [
+            {
+              "id": 400,
+              "parentId": 204,
+              "name": "Brad's grandchild",
+              "img": "avatar.png",
+              "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+              "upVotes": 0,
+              "downVotes": 0,
+              "editCount": 0,
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Bunny",
+      "img": "avatar.png",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+      "upVotes": 0,
+      "downVotes": 0,
+      "editCount": 0,
+      "children": []
+    },
+    {
+      "id": 4,
+      "name": "Kyle",
+      "img": "avatar.png",
+      "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
+      "upVotes": 0,
+      "downVotes": 0,
+      "editCount": 0,
+      "children": []
+    }
+  ]
+}
