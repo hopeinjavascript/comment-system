@@ -1,4 +1,5 @@
 import './App.css';
+import AddCommentOrReply from './components/AddCommentOrReply/AddCommentOrReply';
 import Comments from './components/Comments/Comments';
 import { useEffect, useState } from 'react';
 
@@ -41,9 +42,29 @@ function App() {
     };
   }, []);
 
+  const handleAddComment = (val) => {
+    setComments((prevComments) => [
+      ...prevComments,
+      {
+        id: Date.now(),
+        name: 'New User',
+        img: 'avatar.png',
+        text: val,
+        upVotes: 0,
+        downVotes: 0,
+        editCount: 0,
+        children: [],
+      },
+    ]);
+  };
+
   return (
     <div className="wrapper">
       <h2 className="heading">Discussion</h2>
+
+      <div className="comment-box">
+        <AddCommentOrReply handler={handleAddComment} />
+      </div>
 
       <Comments comments={comments} />
     </div>
