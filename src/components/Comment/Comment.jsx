@@ -11,7 +11,7 @@ import './Comment.css';
 
 const { dd, mmm, yyyy } = genericHelpers.getDateTimeDetails();
 
-const Comment = ({ comment, handleAddReply, handleCancel }) => {
+const Comment = ({ comment, handleAddReply, handleEditComment }) => {
   const {
     id,
     parentId,
@@ -25,8 +25,10 @@ const Comment = ({ comment, handleAddReply, handleCancel }) => {
   } = comment;
 
   const [isReplying, setIsReplying] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
 
   const toggleIsReplying = () => setIsReplying(!isReplying);
+  const toggleIsEditing = () => setIsEditing(!isEditing);
 
   return (
     <div className="comment-container" key={id || parentId}>
@@ -45,7 +47,7 @@ const Comment = ({ comment, handleAddReply, handleCancel }) => {
 
           <p className="comments__text">{text}</p>
 
-          <div className={`cta ${isReplying ? 'hide' : null}`}>
+          <div className={`cta ${isReplying || isEditing ? 'hide' : null}`}>
             <button className={`btn btn-upvote`}>
               <BsHandThumbsUp />
               {upVotes > 0 && <span className="count">{upVotes}</span>}
@@ -60,7 +62,7 @@ const Comment = ({ comment, handleAddReply, handleCancel }) => {
                 <span className="count">{children.length}</span>
               )}
             </button>
-            <button className="btn btn-edit">
+            <button className="btn btn-edit" onClick={toggleIsEditing}>
               <FiEdit2 />
             </button>
             <button className="btn btn-delete">
@@ -71,7 +73,6 @@ const Comment = ({ comment, handleAddReply, handleCancel }) => {
       </div>
 
       {/* replying */}
-
       {isReplying && (
         <AddCommentOrReply
           handler={(val) => {
@@ -83,11 +84,24 @@ const Comment = ({ comment, handleAddReply, handleCancel }) => {
         />
       )}
 
+      {/* editing */}
+      {isEditing && (
+        <AddCommentOrReply
+          handler={(editedText) => {
+            handleEditComment(editedText, id);
+            toggleIsEditing();
+          }}
+          btnText="Edit"
+          handleCancel={toggleIsEditing}
+          text={text}
+        />
+      )}
+
       <ReplyThread
         id={id}
         children={children}
         handleAddReply={handleAddReply}
-        handleCancel={handleCancel}
+        handleEditComment={handleEditComment}
       />
     </div>
   );

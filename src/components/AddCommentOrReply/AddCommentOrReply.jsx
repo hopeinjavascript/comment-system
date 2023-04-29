@@ -4,12 +4,19 @@ import { IoAddSharp } from 'react-icons/io5';
 import { GrPowerReset } from 'react-icons/gr';
 import { VscReply } from 'react-icons/vsc';
 import { MdOutlineCancel } from 'react-icons/md';
+import { FiEdit2 } from 'react-icons/fi';
 
-const AddCommentOrReply = ({ handler, btnText, handleCancel }) => {
-  const inputRef = useRef('');
+const AddCommentOrReply = ({
+  handler,
+  btnText,
+  handleCancel,
+  text = null, // * to get the current text of the comment/reply
+}) => {
+  const inputRef = useRef(text);
 
   useEffect(() => {
     inputRef.current.focus();
+    inputRef.current.value = text; // we can set the text here because we have the reference to the underlying DOM node.
     return () => {};
   }, []);
 
@@ -28,14 +35,22 @@ const AddCommentOrReply = ({ handler, btnText, handleCancel }) => {
         name="comment"
         className="comment-input"
         placeholder="Enter your comment"
-        rows={btnText === 'Reply' ? '5' : '3'}
+        rows={btnText === 'Reply' || btnText === 'Edit' ? '5' : '3'}
       />
       <div className="cta-column">
         <button type="submit" className="btn btn-submit">
           {btnText ?? 'Submit'}
-          {btnText === 'Reply' ? <VscReply /> : <IoAddSharp />}
+
+          {btnText === 'Reply' ? (
+            <VscReply />
+          ) : btnText === 'Edit' ? (
+            <FiEdit2 />
+          ) : (
+            <IoAddSharp />
+            // <FaRegComment />
+          )}
         </button>
-        {btnText === 'Reply' && (
+        {(btnText === 'Reply' || btnText === 'Edit') && (
           <button
             type="button"
             onClick={handleCancel}

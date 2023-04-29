@@ -43,6 +43,22 @@ function cbAddReply(comments, parentId, replyText) {
   return updatedState;
 }
 
+function cbEditComment(comments, id, editedText) {
+  const updatedState = comments.map((comment) => {
+    if (comment.id === id) {
+      comment.text = editedText;
+      comment.editCount = comment.editCount + 1;
+    } else {
+      comment.children.length > 0 &&
+        cbEditComment(comment.children, id, editedText);
+    }
+
+    return comment;
+  });
+
+  return updatedState;
+}
+
 function App() {
   const [comments, setComments] = useState([]);
 
@@ -93,6 +109,11 @@ function App() {
     setComments(updatedState);
   };
 
+  const handleEditComment = (editedText, id) => {
+    const updatedState = cbEditComment(comments, id, editedText);
+    setComments(updatedState);
+  };
+
   return (
     <div className="wrapper">
       <h2 className="heading">Discussion</h2>
@@ -101,7 +122,11 @@ function App() {
         <AddCommentOrReply handler={handleAddComment} />
       </div>
 
-      <Comments comments={comments} handleAddReply={handleAddReply} />
+      <Comments
+        comments={comments}
+        handleAddReply={handleAddReply}
+        handleEditComment={handleEditComment}
+      />
     </div>
   );
 }
