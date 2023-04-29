@@ -41,7 +41,9 @@
   margin-right: 0.5rem;
 }
 
-.comment-date {
+.comment-date,
+.comment-edited,
+.edited-date {
   color: #aaa;
   font-size: 0.85rem;
   /* margin-left: 0.25rem; */

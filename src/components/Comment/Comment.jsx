@@ -43,6 +43,14 @@ const Comment = ({ comment, handleAddReply, handleEditComment }) => {
             <h3 className="profile-name">{name}</h3>
             <span className="dot"></span>
             <span className="comment-date">{`${dd} ${mmm} ${yyyy}`}</span>
+            {editCount > 0 && (
+              <>
+                <span className="dot"></span>
+                <span className="comment-edited">Edited ({editCount})</span>
+                {/* <span className="dot"></span>
+                <span className="edited-date">{`${dd} ${mmm} ${yyyy}`}</span> */}
+              </>
+            )}
           </div>
 
           <p className="comments__text">{text}</p>
