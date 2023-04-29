@@ -14,6 +14,13 @@ const FETCH_OPTIONS = {
   body: JSON.stringify(),
 };
 
+// just to imitate a user
+const LOGGED_IN_USER = {
+  name: 'Akshay Sood',
+  username: 'akshaysood',
+  email: 'akshaysood@gmail.com',
+};
+
 /* this will essentially add nested comments/replies */
 function cbAddReply(comments, parentId, replyText) {
   const updatedState = comments.map((comment, index) => {
@@ -59,6 +66,49 @@ function cbEditComment(comments, id, editedText) {
   return updatedState;
 }
 
+// helper for cbVotes
+function voteCount(comment, voteType, username) {
+  /*
+  A person can either like OR dislike a given comment, but not both.
+  */
+  if (voteType === 'upVotes') {
+    // upVotes is an array because we are going to store username of the person who liked the comment
+    if (!comment.upVotes.includes(username)) {
+      comment.upVotes = comment.upVotes.concat(username);
+    }
+    comment.downVotes = comment.downVotes.filter(
+      (userName) => userName !== username
+    );
+  } else if (voteType === 'downVotes') {
+    // downVotes is an array because we are going to remove username of the person who disliked the comment
+    if (!comment.downVotes.includes(username)) {
+      comment.downVotes = comment.downVotes.concat(username);
+    }
+    comment.upVotes = comment.upVotes.filter(
+      (userName) => userName !== username
+    );
+  }
+}
+
+function cbVotes(comments, id, voteType) {
+  const newComments = comments.map((comment) => {
+    if (comment.id === id) {
+      // just to imitate a logged in user
+      if (LOGGED_IN_USER.username) {
+        voteCount(comment, voteType, LOGGED_IN_USER.username);
+      } else {
+        alert('User is not logged in');
+      }
+    } else {
+      comment.children.length > 0 && cbVotes(comment.children, id, voteType); // maintain no. of args !
+    }
+
+    return comment;
+  });
+
+  return newComments;
+}
+
 function App() {
   const [comments, setComments] = useState([]);
 
@@ -87,7 +137,6 @@ function App() {
     };
   }, []);
 
-  // add comment
   const handleAddComment = (val) => {
     setComments((prevComments) => [
       ...prevComments,
@@ -114,6 +163,16 @@ function App() {
     setComments(updatedState);
   };
 
+  const handleUpVote = (id, voteType) => {
+    const newComments = cbVotes(comments, id, voteType);
+    setComments(newComments);
+  };
+
+  const handleDownVote = (id, voteType) => {
+    const newComments = cbVotes(comments, id, voteType);
+    setComments(newComments);
+  };
+
   return (
     <div className="wrapper">
       <h2 className="heading">Discussion</h2>
@@ -126,6 +185,8 @@ function App() {
         comments={comments}
         handleAddReply={handleAddReply}
         handleEditComment={handleEditComment}
+        handleUpVote={handleUpVote}
+        handleDownVote={handleDownVote}
       />
     </div>
   );

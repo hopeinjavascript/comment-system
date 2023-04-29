@@ -2,7 +2,13 @@ import React from 'react';
 import './Comments.css';
 import Comment from '../Comment/Comment';
 
-const Comments = ({ comments, handleAddReply, handleEditComment }) => {
+const Comments = ({
+  comments,
+  handleAddReply,
+  handleEditComment,
+  handleUpVote,
+  handleDownVote,
+}) => {
   return (
     <div className="comments">
       {comments?.map((comment) => {
@@ -12,6 +18,8 @@ const Comments = ({ comments, handleAddReply, handleEditComment }) => {
             comment={comment}
             handleAddReply={handleAddReply}
             handleEditComment={handleEditComment}
+            handleUpVote={handleUpVote}
+            handleDownVote={handleDownVote}
           />
         );
       })}

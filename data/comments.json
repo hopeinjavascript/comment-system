@@ -5,8 +5,8 @@
       "name": "Akshay Sood",
       "img": "/avatar.png",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-      "upVotes": 0,
-      "downVotes": 0,
+      "upVotes": [],
+      "downVotes": [],
       "editCount": 0,
       "children": [
         {
@@ -15,8 +15,8 @@
           "name": "John",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         },
@@ -26,8 +26,8 @@
           "name": "Alice",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         },
@@ -37,8 +37,8 @@
           "name": "Alice",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         }
@@ -49,8 +49,8 @@
       "name": "Brad",
       "img": "avatar.png",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-      "upVotes": 0,
-      "downVotes": 0,
+      "upVotes": [],
+      "downVotes": [],
       "editCount": 0,
       "children": [
         {
@@ -59,8 +59,8 @@
           "name": "Jack",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         },
@@ -70,8 +70,8 @@
           "name": "Jill",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         },
@@ -81,8 +81,8 @@
           "name": "Mike",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": []
         },
@@ -92,8 +92,8 @@
           "name": "Rochelle",
           "img": "avatar.png",
           "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-          "upVotes": 0,
-          "downVotes": 0,
+          "upVotes": [],
+          "downVotes": [],
           "editCount": 0,
           "children": [
             {
@@ -102,8 +102,8 @@
               "name": "Brad's grandchild",
               "img": "avatar.png",
               "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-              "upVotes": 0,
-              "downVotes": 0,
+              "upVotes": [],
+              "downVotes": [],
               "editCount": 0,
               "children": []
             }
@@ -116,8 +116,8 @@
       "name": "Bunny",
       "img": "avatar.png",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-      "upVotes": 0,
-      "downVotes": 0,
+      "upVotes": [],
+      "downVotes": [],
       "editCount": 0,
       "children": []
     },
@@ -126,8 +126,8 @@
       "name": "Kyle",
       "img": "avatar.png",
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione reiciendis quidem voluptate dicta necessitatibus nobis officiis nam hic sequi enim.",
-      "upVotes": 0,
-      "downVotes": 0,
+      "upVotes": [],
+      "downVotes": [],
       "editCount": 0,
       "children": []
     }

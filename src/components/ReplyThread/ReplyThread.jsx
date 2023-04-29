@@ -24,6 +24,8 @@ const ReplyThread = (props) => {
             comments={moreReplies ? props.children : props.children.slice(0, 1)} // if there's only 1 child then it will be shown by default (2.)
             handleAddReply={props.handleAddReply}
             handleEditComment={props.handleEditComment}
+            handleUpVote={props.handleUpVote}
+            handleDownVote={props.handleDownVote}
           />
         )}
       </div>

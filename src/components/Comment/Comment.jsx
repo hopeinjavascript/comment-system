@@ -11,7 +11,13 @@ import './Comment.css';
 
 const { dd, mmm, yyyy } = genericHelpers.getDateTimeDetails();
 
-const Comment = ({ comment, handleAddReply, handleEditComment }) => {
+const Comment = ({
+  comment,
+  handleAddReply,
+  handleEditComment,
+  handleUpVote,
+  handleDownVote,
+}) => {
   const {
     id,
     parentId,
@@ -56,13 +62,23 @@ const Comment = ({ comment, handleAddReply, handleEditComment }) => {
           <p className="comments__text">{text}</p>
 
           <div className={`cta ${isReplying || isEditing ? 'hide' : null}`}>
-            <button className={`btn btn-upvote`}>
+            <button
+              className={`btn btn-upvote`}
+              onClick={() => handleUpVote(id, 'upVotes')}
+            >
               <BsHandThumbsUp />
-              {upVotes > 0 && <span className="count">{upVotes}</span>}
+              {upVotes.length > 0 && (
+                <span className="count">{upVotes.length}</span>
+              )}
             </button>
-            <button className={`btn btn-downvote`}>
+            <button
+              className={`btn btn-downvote`}
+              onClick={() => handleDownVote(id, 'downVotes')}
+            >
               <BsHandThumbsDown />
-              {downVotes > 0 && <span className="count">{downVotes}</span>}
+              {downVotes.length > 0 && (
+                <span className="count">{downVotes.length}</span>
+              )}
             </button>
             <button className="btn btn-reply" onClick={toggleIsReplying}>
               <VscReply />
@@ -110,6 +126,8 @@ const Comment = ({ comment, handleAddReply, handleEditComment }) => {
         children={children}
         handleAddReply={handleAddReply}
         handleEditComment={handleEditComment}
+        handleUpVote={handleUpVote}
+        handleDownVote={handleDownVote}
       />
     </div>
   );
