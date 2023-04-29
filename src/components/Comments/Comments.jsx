@@ -8,6 +8,7 @@ const Comments = ({
   handleEditComment,
   handleUpVote,
   handleDownVote,
+  handleDeleteComment,
 }) => {
   return (
     <div className="comments">
@@ -20,6 +21,7 @@ const Comments = ({
             handleEditComment={handleEditComment}
             handleUpVote={handleUpVote}
             handleDownVote={handleDownVote}
+            handleDeleteComment={handleDeleteComment}
           />
         );
       })}

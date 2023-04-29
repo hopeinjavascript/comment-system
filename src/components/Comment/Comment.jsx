@@ -17,6 +17,7 @@ const Comment = ({
   handleEditComment,
   handleUpVote,
   handleDownVote,
+  handleDeleteComment,
 }) => {
   const {
     id,
@@ -89,7 +90,10 @@ const Comment = ({
             <button className="btn btn-edit" onClick={toggleIsEditing}>
               <FiEdit2 />
             </button>
-            <button className="btn btn-delete">
+            <button
+              className="btn btn-delete"
+              onClick={() => handleDeleteComment(id)}
+            >
               <AiOutlineDelete />
             </button>
           </div>
@@ -128,6 +132,7 @@ const Comment = ({
         handleEditComment={handleEditComment}
         handleUpVote={handleUpVote}
         handleDownVote={handleDownVote}
+        handleDeleteComment={handleDeleteComment}
       />
     </div>
   );

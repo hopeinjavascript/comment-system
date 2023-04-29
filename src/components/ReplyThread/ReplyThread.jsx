@@ -26,6 +26,7 @@ const ReplyThread = (props) => {
             handleEditComment={props.handleEditComment}
             handleUpVote={props.handleUpVote}
             handleDownVote={props.handleDownVote}
+            handleDeleteComment={props.handleDeleteComment}
           />
         )}
       </div>

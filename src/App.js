@@ -109,6 +109,21 @@ function cbVotes(comments, id, voteType) {
   return newComments;
 }
 
+function cbDeleteComment(comments, id) {
+  for (let i = 0; i < comments.length; i++) {
+    const comment = comments[i];
+
+    if (comment.id === id) {
+      comments.splice(i, 1);
+    }
+
+    comment.children.length > 0 && cbDeleteComment(comment.children, id);
+  }
+
+  // spreading because sending same reference of the array won't update the state because of how the React's diffing algorithm works
+  return [...comments];
+}
+
 function App() {
   const [comments, setComments] = useState([]);
 
@@ -173,6 +188,11 @@ function App() {
     setComments(newComments);
   };
 
+  const handleDeleteComment = (id) => {
+    const updatedComments = cbDeleteComment(comments, id);
+    setComments(updatedComments);
+  };
+
   return (
     <div className="wrapper">
       <h2 className="heading">Discussion</h2>
@@ -187,6 +207,7 @@ function App() {
         handleEditComment={handleEditComment}
         handleUpVote={handleUpVote}
         handleDownVote={handleDownVote}
+        handleDeleteComment={handleDeleteComment}
       />
     </div>
   );
