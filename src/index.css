@@ -34,3 +34,12 @@ code {
 .btn:hover {
   background-color: #ededed;
 }
+
+.disable {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.hide {
+  display: none;
+}

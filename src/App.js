@@ -14,6 +14,35 @@ const FETCH_OPTIONS = {
   body: JSON.stringify(),
 };
 
+/* this will essentially add nested comments/replies */
+function cbAddReply(comments, parentId, replyText) {
+  const updatedState = comments.map((comment, index) => {
+    if (comment.id === parentId) {
+      comment.children = [
+        ...comment.children,
+        {
+          id: Date.now(),
+          parentId: parentId,
+          name: 'No User' + index,
+          img: 'avatar.png',
+          text: `@${comment.name} ${replyText}`,
+          upVotes: 0,
+          downVotes: 0,
+          editCount: 0,
+          children: [],
+        },
+      ];
+    } else {
+      comment.children.length > 0 &&
+        cbAddReply(comment.children, parentId, replyText);
+    }
+
+    return comment;
+  });
+
+  return updatedState;
+}
+
 function App() {
   const [comments, setComments] = useState([]);
 
@@ -42,6 +71,7 @@ function App() {
     };
   }, []);
 
+  // add comment
   const handleAddComment = (val) => {
     setComments((prevComments) => [
       ...prevComments,
@@ -58,6 +88,11 @@ function App() {
     ]);
   };
 
+  const handleAddReply = (replyText, parentId) => {
+    const updatedState = cbAddReply(comments, parentId, replyText);
+    setComments(updatedState);
+  };
+
   return (
     <div className="wrapper">
       <h2 className="heading">Discussion</h2>
@@ -66,7 +101,7 @@ function App() {
         <AddCommentOrReply handler={handleAddComment} />
       </div>
 
-      <Comments comments={comments} />
+      <Comments comments={comments} handleAddReply={handleAddReply} />
     </div>
   );
 }
