@@ -1,9 +1,8 @@
 import React, { useEffect, useRef } from 'react';
 import './AddCommentOrReply.css';
-import { IoAddSharp } from 'react-icons/io5';
-import { GrPowerReset } from 'react-icons/gr';
-import { VscReply } from 'react-icons/vsc';
-import { MdOutlineCancel } from 'react-icons/md';
+import { GrPowerReset, GrAdd } from 'react-icons/gr';
+import { HiReply } from 'react-icons/hi';
+import { AiOutlineStop } from 'react-icons/ai';
 import { FiEdit2 } from 'react-icons/fi';
 import { useUserContext } from '../../context/UserContext';
 
@@ -45,27 +44,30 @@ const AddCommentOrReply = ({
         rows={btnText === 'Reply' || btnText === 'Edit' ? '5' : '3'}
       />
       <div className="cta-column">
-        <button type="submit" className="btn btn-submit">
+        <button type="submit" className="btn btn-submit icon-btn">
           {btnText ?? 'Submit'}
 
           {btnText === 'Reply' ? (
-            <VscReply />
+            <HiReply />
           ) : btnText === 'Edit' ? (
             <FiEdit2 />
           ) : (
-            <IoAddSharp />
+            <GrAdd />
           )}
         </button>
         {(btnText === 'Reply' || btnText === 'Edit') && (
           <button
             type="button"
             onClick={handleCancel}
-            className="btn btn-cancel"
+            className="btn btn-cancel icon-btn"
           >
-            Cancel <MdOutlineCancel />
+            Cancel
+            <span className="btn-icon">
+              <AiOutlineStop />
+            </span>
           </button>
         )}
-        <button type="reset" className="btn btn-reset">
+        <button type="reset" className="btn btn-reset icon-btn">
           Reset <GrPowerReset />
         </button>
       </div>
