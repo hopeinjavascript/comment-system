@@ -5,6 +5,7 @@ import { GrPowerReset } from 'react-icons/gr';
 import { VscReply } from 'react-icons/vsc';
 import { MdOutlineCancel } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi';
+import { useUserContext } from '../../context/UserContext';
 
 const AddCommentOrReply = ({
   handler,
@@ -13,6 +14,8 @@ const AddCommentOrReply = ({
   text = null, // * to get the current text of the comment/reply
 }) => {
   const inputRef = useRef(text);
+
+  const loggedInUser = useUserContext();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -34,7 +37,11 @@ const AddCommentOrReply = ({
         ref={inputRef}
         name="comment"
         className="comment-input"
-        placeholder="Enter your comment"
+        placeholder={
+          loggedInUser?.name
+            ? `@${loggedInUser.name?.split(' ')[0]} Enter your comment`
+            : null
+        }
         rows={btnText === 'Reply' || btnText === 'Edit' ? '5' : '3'}
       />
       <div className="cta-column">
@@ -47,7 +54,6 @@ const AddCommentOrReply = ({
             <FiEdit2 />
           ) : (
             <IoAddSharp />
-            // <FaRegComment />
           )}
         </button>
         {(btnText === 'Reply' || btnText === 'Edit') && (
