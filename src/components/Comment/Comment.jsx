@@ -18,6 +18,7 @@ const Comment = ({
   handleUpVote,
   handleDownVote,
   handleDeleteComment,
+  loggedInUser,
 }) => {
   const {
     id,
@@ -25,6 +26,7 @@ const Comment = ({
     name,
     img,
     text,
+    userId,
     upVotes,
     downVotes,
     editCount,
@@ -87,15 +89,19 @@ const Comment = ({
                 <span className="count">{children.length}</span>
               )}
             </button>
-            <button className="btn btn-edit" onClick={toggleIsEditing}>
-              <FiEdit2 />
-            </button>
-            <button
-              className="btn btn-delete"
-              onClick={() => handleDeleteComment(id)}
-            >
-              <AiOutlineDelete />
-            </button>
+            {loggedInUser?.id === userId && (
+              <>
+                <button className="btn btn-edit" onClick={toggleIsEditing}>
+                  <FiEdit2 />
+                </button>
+                <button
+                  className="btn btn-delete"
+                  onClick={() => handleDeleteComment(id)}
+                >
+                  <AiOutlineDelete />
+                </button>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -12,8 +12,7 @@ const Comments = ({
   handleDeleteComment,
 }) => {
   // useContext hook is called in the UserContext.js file itself so that any changes to be made in the future are in one place
-  const user = useUserContext();
-  console.log(user);
+  const loggedInUser = useUserContext();
 
   return (
     <div className="comments">
@@ -27,6 +26,7 @@ const Comments = ({
             handleUpVote={handleUpVote}
             handleDownVote={handleDownVote}
             handleDeleteComment={handleDeleteComment}
+            loggedInUser={loggedInUser}
           />
         );
       })}
