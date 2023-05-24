@@ -110,7 +110,7 @@ const Comment = ({
       {isReplying && (
         <AddCommentOrReply
           handler={(val) => {
-            handleAddReply(val, id); //id = parentId for the nested comment
+            handleAddReply(val, id, loggedInUser); //id = parentId for the nested comment
             toggleIsReplying();
           }}
           btnText="Reply"

@@ -3,6 +3,7 @@ import AddCommentOrReply from './components/AddCommentOrReply/AddCommentOrReply'
 import Comments from './components/Comments/Comments';
 import { useEffect, useRef, useState } from 'react';
 import genericHelpers from './helpers/generic';
+import { useUserContext } from './context/UserContext';
 
 const URL = 'http://localhost:3001/comments';
 
@@ -23,7 +24,7 @@ const LOGGED_IN_USER = {
 };
 
 /* this will essentially add nested comments/replies */
-function cbAddReply(comments, parentId, replyText) {
+function cbAddReply(comments, parentId, replyText, loggedInUser) {
   const updatedState = comments.map((comment, index) => {
     if (comment.id === parentId) {
       comment.children = [
@@ -31,7 +32,7 @@ function cbAddReply(comments, parentId, replyText) {
         {
           id: Date.now(),
           parentId: parentId,
-          name: 'No User' + index,
+          name: loggedInUser ? loggedInUser.name : 'Guest User ' + index,
           img: 'avatar.png',
           text: `@${comment.name} ${replyText}`,
           upVotes: [],
@@ -129,6 +130,8 @@ function App() {
   const [comments, setComments] = useState([]);
   const countRef = useRef(0);
 
+  const loggedInUser = useUserContext();
+
   useEffect(() => {
     const controller = new AbortController();
     const signal = controller.signal;
@@ -163,7 +166,7 @@ function App() {
       ...prevComments,
       {
         id: Date.now(),
-        name: 'New User',
+        name: loggedInUser ? loggedInUser.name : 'Guest User',
         img: 'avatar.png',
         text: val,
         upVotes: [],
@@ -175,8 +178,13 @@ function App() {
     countRef.commentsCount++;
   };
 
-  const handleAddReply = (replyText, parentId) => {
-    const updatedState = cbAddReply(comments, parentId, replyText);
+  const handleAddReply = (replyText, parentId, loggedInUser) => {
+    const updatedState = cbAddReply(
+      comments,
+      parentId,
+      replyText,
+      loggedInUser
+    );
     setComments(updatedState);
     countRef.commentsCount++;
   };
