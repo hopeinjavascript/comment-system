@@ -54,6 +54,19 @@ const generics = {
       ddmmyyyyhhmmss,
     };
   },
+
+  recursivelyFlattenArray: function (arrayToFlatten, flattenedArray = []) {
+    arrayToFlatten.forEach((el) => {
+      flattenedArray.push(el);
+      if (el.children.length) {
+        const arrCopy = el.children;
+        this.recursivelyFlattenArray(arrCopy, flattenedArray);
+        // el.children.length = 0;
+      }
+    });
+
+    return flattenedArray;
+  },
 };
 
 export default generics;

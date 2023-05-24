@@ -1,7 +1,8 @@
 import './App.css';
 import AddCommentOrReply from './components/AddCommentOrReply/AddCommentOrReply';
 import Comments from './components/Comments/Comments';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import genericHelpers from './helpers/generic';
 
 const URL = 'http://localhost:3001/comments';
 
@@ -126,6 +127,7 @@ function cbDeleteComment(comments, id) {
 
 function App() {
   const [comments, setComments] = useState([]);
+  const countRef = useRef(0);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -138,7 +140,11 @@ function App() {
           throw new Error('Error fetching comments!');
         }
         const comments = await res.json();
-        console.log(comments);
+
+        // storing in ref won't call the getCommentsCount fn on every new comment/reply that is added -> check pt (1.)
+        // we can do this because refs don't cause re-renders and remembers data across re-renders and entire lifecycle of the component
+        countRef.commentsCount = getCommentsCount(comments);
+
         setComments(comments);
       } catch (error) {
         console.error('Network Error : ', error);
@@ -166,11 +172,13 @@ function App() {
         children: [],
       },
     ]);
+    countRef.commentsCount++;
   };
 
   const handleAddReply = (replyText, parentId) => {
     const updatedState = cbAddReply(comments, parentId, replyText);
     setComments(updatedState);
+    countRef.commentsCount++;
   };
 
   const handleEditComment = (editedText, id) => {
@@ -193,9 +201,15 @@ function App() {
     setComments(updatedComments);
   };
 
+  // comments count
+  function getCommentsCount(comments) {
+    console.log('getCommentsCount'); //(1.) check why this is printing twice when called this function in JSX directly(where countRef is referred)
+    return genericHelpers.recursivelyFlattenArray(comments).length;
+  }
+
   return (
     <div className="wrapper">
-      <h2 className="heading">Discussion</h2>
+      <h2 className="heading">Discussion ({countRef.commentsCount})</h2>
 
       <div className="comment-box">
         <AddCommentOrReply handler={handleAddComment} />
